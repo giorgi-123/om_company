@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <menuitem id="menu_company_root"
+              name="Company"
+              sequence="10"/>
+
+    <menuitem id="menu_operations"
+              name="Operations"
+              parent="menu_company_root"
+              sequence="10"/>
+
+
+</odoo>

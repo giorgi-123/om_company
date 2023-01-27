@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+om_company.access_employee,access_employee,om_company.model_employee,base.group_user,1,1,1,1
+om_company.access_tasks,access_tasks,om_company.model_tasks,base.group_user,1,1,1,1
+om_company.access_department,access_department,om_company.model_department,base.group_user,1,1,1,1
