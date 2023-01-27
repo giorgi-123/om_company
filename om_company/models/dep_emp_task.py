@@ -1,4 +1,5 @@
 from odoo import api, fields, models
+import re
 
 class Department(models.Model):
     _name = "department"
@@ -10,11 +11,18 @@ class Employee(models.Model):
 
     name = fields.Char(string="Name", required=True)
     surname = fields.Char(string="Surname", required=True)
-    age = fields.Integer(string="Age", required=True)
-    mail = fields.Char(string="Email", required=True)
+    age = fields.Integer(string="Age", required=True, widget='age')
+    email = fields.Char(string="Email", required=True, widget='email', size=256)
     address = fields.Char(string="Address", required=True)
 
     department = fields.Many2one("department", string="Department", required=True)
+    @api.constrains('age', 'email')
+    def _validate_email_and_age(self):
+        regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9]+\.[A-Z|a-z]{2,7}\b'
+        if not re.match(regex, self.email):
+            raise ValueError("Email is not valid !")
+        if self.age < 18:
+            raise ValueError("You must be 18 or older !")
 
 
 class Tasks(models.Model):

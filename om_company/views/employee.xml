@@ -10,8 +10,8 @@
                     <group>
                         <field name="name"/>
                         <field name="surname"/>
-                        <field name="age"/>
-                        <field name="mail"/>
+                        <field name="age" widget="age"/>
+                        <field name="email" widget="email"/>
                         <field name="address"/>
                         <field name="department"/>
                     </group>
@@ -29,7 +29,7 @@
                 <field name="name"/>
                 <field name="surname"/>
                 <field name="age"/>
-                <field name="mail"/>
+                <field name="email"/>
                 <field name="address"/>
                 <field name="department"/>
             </tree>
