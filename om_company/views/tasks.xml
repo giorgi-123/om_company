@@ -1,43 +1,55 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    <data>
+        <record id="view_company_tasks_form" model="ir.ui.view">
+            <field name="name">tasks.form</field>
+            <field name="model">tasks</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="task"/>
+                            <field name="employee_id"/>
+                            <field name="employee_name" invisible="0"/>
+                            <field name="employee_surname" invisible="0"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
-    <record id="view_company_tasks_form" model="ir.ui.view">
-        <field name="name">tasks.form</field>
-        <field name="model">tasks</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <group>
-                        <field name="name"/>
-                        <field name="task"/>
-                        <field name="employee_id"/>
-                        <field name="employee_name" invisible="0"/>
-                        <field name="employee_surname" invisible="0"/>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
+        <record id="view_company_tasks_tree" model="ir.ui.view">
+            <field name="name">tasks.tree</field>
+            <field name="model">tasks</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
 
-    <record id="view_company_tasks_tree" model="ir.ui.view">
-        <field name="name">tasks.tree</field>
-        <field name="model">tasks</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
-            </tree>
-        </field>
-    </record>
+        <record id="action_company_tasks" model="ir.actions.act_window">
+            <field name="name">Task</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tasks</field>
+            <field name="view_mode">form</field>
+        </record>
+        <record id="action_company_tasks_tree" model="ir.actions.act_window">
+            <field name="name">Task</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tasks</field>
+            <field name="view_mode">tree</field>
+        </record>
+        <menuitem id="menu_tasks" name="Create Task"/>
 
-    <record id="action_company_tasks" model="ir.actions.act_window">
-        <field name="name">Tasks</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="res_model">tasks</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-    <menuitem id="menu_tasks"
-              name="Tasks"
-              parent="menu_operations"
-              action="action_company_tasks"
-              sequence="10"/>
+        <menuitem id="menu_view" name="View" parent="menu_tasks"/>
+
+        <menuitem id="menu_view_tasks"
+                  name="View All Tasks"
+                  parent="menu_view"
+                  action="action_company_tasks_tree"
+                  sequence="10"/>
+
+    </data>
 </odoo>
